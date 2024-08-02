@@ -1,0 +1,116 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta 
+    charset="UTF-8"> <meta name="viewport" 
+    content="width=device-width, 
+    initial-scale=1.0"> <title>ENTHA 
+    MYRE</title> <style>
+        body { margin: 0; padding: 0; 
+            background: 
+            linear-gradient(135deg, #1a1a1a, 
+            #000000); /* Black gradient */
+            font-family: 'Times New Roman', 
+            serif; /* Default font */ color: 
+            #ff0000; /* Red text */
+            display: flex; flex-direction: 
+            column; align-items: center; 
+            height: 100vh; text-align: center; 
+            justify-content: center;
+		overflow: hidden;
+        }
+        .navbar { width: 100%; background: 
+            rgba(0, 0, 0, 0.7); /* 
+            Semi-transparent background */ 
+            display: flex; justify-content: 
+            flex-end; /* Align to the right */ 
+            padding: 10px; position: fixed; 
+            top: 0; left: 0; border-radius: 
+            10px; /* Rounded corners */ 
+            box-shadow: 0 4px 8px rgba(0, 0, 
+            0, 0.3);	
+		z-index: 1;
+        }
+        .navbar a { color: #ff0000; /* Red 
+            text */ text-decoration: none; 
+            padding: 10px 15px; /* Adjusted 
+            padding */ font-size: 1rem; /* 
+            Smaller font size */ margin: 0 
+            10px; border-radius: 5px; /* 
+            Rounded corners for links */
+        }
+        .navbar a:hover { background: 
+            rgba(255, 0, 0, 0.1); /* Light red 
+            highlight on hover */ 
+            text-decoration: underline;
+        }
+        .logo { position: absolute;
+		 top: 7px; 
+            left: 5px;
+		 width: 30px;
+		 height: 30px;
+		 border: 3px solid #ff0000; 
+            /* Red border */ border-radius: 
+            50%; 
+		/* Rounded border */ padding: 
+            5px;
+		 /* Gap between image and 
+            border */ background: #000;
+		 /* 
+            Background color for contrast */
+		z-index: 2;
+        }
+        .container { margin-top: 80px; /* 
+            Space for the navbar */ flex: 1; 
+            display: flex; flex-direction: 
+            column; justify-content: center;
+        }
+        h1 { font-size: 6rem; /* Increased 
+            font size by 10 */ font-family: 
+            'Comic Sans MS', cursive, 
+            sans-serif; /* Funny font */ 
+            font-weight: bold; /* Bold text */ 
+            margin: 0; color: #ff0000; /* Red 
+            text */ text-shadow: 6px 6px 8px 
+            rgba(139, 0, 0, 0.7), /* Dark red 
+            shadow */
+                         -3px -3px 5px 
+                         rgba(255, 99, 71, 
+                         0.7); /* Light red 
+                         highlight */
+            letter-spacing: 2px; /* Thicker 
+            character spacing */
+        }
+        h2 { font-size: 4rem; /* Increased 
+            font size */ font-weight: bold; /* 
+            Bold text */ color: #ff0000; /* 
+            Red text */ margin: 0; 
+            text-shadow: 3px 3px 5px rgba(139, 
+            0, 0, 0.7), /* Dark red shadow */
+                         -2px -2px 3px 
+                         rgba(255, 99, 71, 
+                         0.7); /* Light red 
+                         highlight */
+            letter-spacing: 1px; /* Thicker 
+            character spacing */
+        }
+        .copyright { position: fixed; bottom: 
+            10px; width: 100%; text-align: 
+            center; font-size: 0.8rem; color: 
+            #ff0000; /* Red text */
+        }
+    </style>
+ </head>
+ <body>
+ <img src="/Logo.jpg" 
+    alt="" class="logo"> <div 
+    class="navbar">
+        <a href="#">Home</a> <a 
+        href="#">About</a> <a 
+        href="#">Contact</a>
+    </div> <div class="container"> 
+        <h1>ENTHA</h1> <h2>MYRE</h2>
+    </div> <div class="copyright"> &copy; 
+        Bryan Dilon D'cruz
+    </div> <script>
+        // Optional JavaScript code for future 
+        // enhancements
+    </script> </body>
+</html>
