@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANJO</title>
+    <script src="/script.js"></script>
+    <style>
+        /* Include your CSS here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #e6e6e6;
+        }
+
+        header {
+            background-color: #333;
+            color: #e6e6e6;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 2em;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .question-card {
+            background-color: #2e2e2e;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px 0;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .question-card h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .question-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .question-card li {
+            background-color: #444;
+            border: 1px solid #555;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .question-card li.correct {
+            background-color: #4caf50; /* Green for correct */
+            color: #fff;
+        }
+
+        .question-card li.incorrect {
+            background-color: #f44336; /* Red for incorrect */
+            color: #fff;
+        }
+
+        footer {
+            background-color: #333;
+            color: #e6e6e6;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+transition: transform 0.3s ease, opacity 0.3s ease;
+transform: translateY(0);
+opacity: 1;
+}
+
+footer.hidden {
+    transform: translateY(100%);
+    opacity: 0;
+}
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .home-icon {
+            font-size: 2em;
+            color: #e6e6e6;
+            text-decoration: none;
+            margin-bottom: 5px;
+        }
+
+        .home-icon:hover {
+            color: #ddd;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        SANJO
+    </header>
+    
+    <main id="questions-container">
+        <!-- Questions will be dynamically loaded here -->
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <a href="#home" class="home-icon">&#8962;</a>
+            <p>&copy; 2024 SANJO. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+let lastScrollTop = 0;
+const navbar = document.querySelector('header');
+const footer = document.querySelector('footer');
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop) {
+        navbar.classList.add('hidden');
+        footer.classList.add('hidden'); // Add hidden class to footer
+    } else {
+        navbar.classList.remove('hidden');
+        footer.classList.remove('hidden'); // Remove hidden class from footer
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+
+async function loadQuestions() {
+    try {
+        const response = await fetch('/q.txt');
+        const data = await response.text();
+        const questions = data.trim().split('\n\n'); // Split questions
+
+        const container = document.getElementById('questions-container');
+        container.innerHTML = '';
+
+        questions.forEach((questionBlock, index) => {
+            const [question, ...answers] = questionBlock.split('\n');
+            const questionCard = document.createElement('div');
+            questionCard.classList.add('question-card');
+            
+            questionCard.innerHTML = `
+                <h2>QUESTION ${index + 1}</h2>
+                <h3>${question}</h3>
+                <ul>
+                    ${answers.map((answer, index) => `
+                        <li class="answer" data-index="${index}">
+                            ${answer}
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+            container.appendChild(questionCard);
+        });
+
+        document.querySelectorAll('.answer').forEach(answer => {
+            answer.addEventListener('click', function() {
+                const parent = this.parentElement;
+                parent.querySelectorAll('.answer').forEach(a => {
+                    if (a !== this) a.classList.remove('correct', 'incorrect');
+                });
+
+                const isCorrect = this.dataset.index === '1'; // Update logic based on your data
+                this.classList.add(isCorrect ? 'correct' : 'incorrect');
+            });
+        });
+    } catch (error) {
+        console.error('Error loading questions:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadQuestions);
+    </script>
+</body>
+</html>
