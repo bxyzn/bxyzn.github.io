@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>പല്ലീൻ്റെ സ്വന്തം മക്കൾ</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            background-color: #FF6F00; /* Orangish color */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 0;
+        }
+        form {
+            background-color: #f7e6d4; /* Creamy white */
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px 0;
+            display: block;
+            width: 100%;
+            font-size: 16px;
+        }
+        button {
+            background-color: #FF6F00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e65c00;
+        }
+        footer {
+            background-color: #e0e0e0;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            border-top: 2px solid #ccc;
+            margin: 0;
+        }
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>പല്ലീൻ്റെ സ്വന്തം മക്കൾ</h1>
+
+    <form>
+        <label for="subject">Subject:</label>
+        <select id="subject" onchange="loadChapters()">
+            <option value="">Select Subject</option>
+        </select>
+
+        <label for="chapter">Chapter:</label>
+        <select id="chapter">
+            <option value="">Select Chapter</option>
+        </select>
+
+        <button type="button" onclick="downloadNote()">Download</button>
+    </form>
+
+    <footer>
+        ©opyright by <a href="https://instagram.com/st.josephz_">st josephz</a>
+    </footer>
+
+<Script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Define subjects and their chapters
+    const subjects = {
+        "Subject1": ["Chapter 1", "Chapter 2", "Chapter 3"],
+        "Subject2": ["Chapter 1", "Chapter 2"],
+        "Subject3": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4"],
+        "Subject4": ["Chapter 1", "Chapter 2"],
+        "Subject5": ["Chapter 1", "Chapter 2", "Chapter 3"],
+        "Subject6": ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5"]
+    };
+
+    // Function to populate subjects
+    function populateSubjects() {
+        const subjectSelect = document.getElementById('subject');
+        Object.keys(subjects).forEach(subject => {
+            const option = document.createElement('option');
+            option.value = subject;
+            option.textContent = subject;
+            subjectSelect.appendChild(option);
+        });
+    }
+
+    // Function to load chapters based on the selected subject
+    function loadChapters() {
+        const subject = document.getElementById('subject').value;
+        const chapterSelect = document.getElementById('chapter');
+        chapterSelect.innerHTML = '<option value="">Select Chapter</option>'; // Clear previous options
+
+        if (subjects[subject]) {
+            subjects[subject].forEach((chapter, index) => {
+                const option = document.createElement('option');
+                option.value = `file${index + 1}`;
+                option.textContent = chapter;
+                chapterSelect.appendChild(option);
+            });
+        }
+    }
+
+    // Function to handle file download
+    function downloadNote() {
+        const subject = document.getElementById('subject').value;
+        const chapter = document.getElementById('chapter').value;
+        if (subject && chapter) {
+            const url = `${subject}/${chapter}.pdf`;
+            window.location.href = url; // Trigger download
+        }
+    }
+
+    document.getElementById('subject').addEventListener('change', loadChapters);
+    document.querySelector('button').addEventListener('click', downloadNote);
+
+    // Populate subjects on page load
+    populateSubjects();
+});
+</Script>
+</body>
+</html>
