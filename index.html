@@ -1,8 +1,9 @@
 <h1>hi</h1>
 <form method="post">
-    <input type="text" placeholder=">> " id="inputbx" >
+    <input type="text" placeholder=">> " id="inputbx">
 </form>
-<script lang="javascript">
+
+<script>
     const inputbx = document.getElementById("inputbx");
     const form = inputbx.form;
 
@@ -17,15 +18,18 @@
             },
             body: JSON.stringify({
                 content: value,
-                username: 'light'w
+                username: 'light'
             })
-        }).then(response => {
+        })
+        .then(response => {
             if (response.ok) {
                 alert("Message sent!");
+                inputbx.value = "";
             } else {
                 alert("Failed to send message.");
             }
-        }).catch(error => {
+        })
+        .catch(error => {
             alert("Error: " + error);
         });
     });
