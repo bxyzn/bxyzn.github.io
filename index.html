@@ -1,0 +1,32 @@
+<h1>hi</h1>
+<form method="post">
+    <input type="text" placeholder=">> " id="inputbx" >
+</form>
+<script lang="javascript">
+    const inputbx = document.getElementById("inputbx");
+    const form = inputbx.form;
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const value = inputbx.value;
+
+        fetch("https://discordapp.com/api/webhooks/1427953080980213811/LFDnBo28L01F8JU8pdIso_L-7jORS5WIpN1pTG-VEXpWorB8Zy814QB4FYrcXgYkymtL", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                content: value,
+                username: 'light'w
+            })
+        }).then(response => {
+            if (response.ok) {
+                alert("Message sent!");
+            } else {
+                alert("Failed to send message.");
+            }
+        }).catch(error => {
+            alert("Error: " + error);
+        });
+    });
+</script>
