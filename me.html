@@ -1,3 +1,339 @@
-<center>
-<h1>JUCK FEWS</h1>
-</center>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$ [ bxyzn | Private ]</title>
+    <link rel="icon" href="p.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b0b0;
+            --accent: #ff003c;
+            --accent-glow: rgba(255, 0, 60, 0.4);
+            --border-color: #222222;
+            --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+            --font-sans: 'Inter', sans-serif;
+            --success-green: #00ff88;
+            --error-red: #ff3333;
+        }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+        
+        h1, h2, h3, h4, .tech-tag, .status-label, .cta-button, .link-button, .footer, .prompt, 
+        #authForm label, #authForm button, .data-section h3, .info-item label { font-family: var(--font-mono); }
+        
+        h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+        h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--accent); }
+        h4 { font-size: 1.1rem; margin: 1.5rem 0 0.8rem 0; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+        
+        .accent { color: var(--accent); }
+        .success { color: var(--success-green); }
+        .error { color: var(--error-red); }
+        
+        .hero { text-align: center; padding: 4rem 1rem; border-bottom: 1px solid var(--border-color); margin-bottom: 3rem; }
+        .tagline { font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; }
+        
+        #authForm { max-width: 500px; margin: 2rem auto; padding: 2rem; background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 4px; }
+        #authForm label { display: block; margin-bottom: 0.8rem; font-size: 0.95rem; color: var(--text-secondary); }
+        #passwordInput {
+            width: 100%; padding: 1rem; background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary);
+            font-family: var(--font-mono); font-size: 1.1rem; letter-spacing: 1px;
+            margin-bottom: 1.5rem; transition: border-color 0.3s ease;
+        }
+        #passwordInput:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
+        #authForm button {
+            width: 100%; padding: 1rem; background-color: transparent; color: var(--accent);
+            border: 1px solid var(--accent); font-size: 1.1rem; cursor: pointer; border-radius: 4px;
+            transition: all 0.3s ease; box-shadow: 0 0 10px var(--accent-glow);
+        }
+        #authForm button:hover { background-color: var(--accent); color: #000; box-shadow: 0 0 20px var(--accent-glow); }
+        #authMessage { text-align: center; margin-top: 1rem; min-height: 1.5rem; font-family: var(--font-mono); }
+        
+        #dataDisplay { display: none; margin-top: 2rem; }
+        .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 1.5rem; }
+        .data-section {
+            background-color: var(--bg-secondary); border: 1px solid var(--border-color); padding: 1.5rem;
+            border-radius: 4px; transition: border-color 0.3s ease;
+        }
+        .data-section:hover { border-color: rgba(255, 0, 60, 0.5); }
+        .info-item { margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .info-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .info-item label { display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .info-item .value { font-size: 1.1rem; color: var(--text-primary); word-break: break-word; }
+        .list-item { margin-bottom: 0.5rem; }
+        .badge {
+            display: inline-block; background-color: rgba(0, 255, 136, 0.1); color: var(--success-green);
+            padding: 0.3rem 0.7rem; border-radius: 3px; font-size: 0.85rem;
+            border: 1px solid rgba(0, 255, 136, 0.3); font-family: var(--font-mono);
+        }
+        
+        #logoutBtn {
+            display: none; margin: 2rem auto; padding: 0.8rem 2rem; background-color: transparent;
+            color: var(--text-secondary); border: 1px solid var(--border-color); font-family: var(--font-mono);
+            font-size: 0.9rem; cursor: pointer; border-radius: 4px; transition: all 0.3s ease;
+        }
+        #logoutBtn:hover { border-color: var(--accent); color: var(--accent); }
+        
+        .footer { text-align: center; padding-top: 3rem; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9rem; margin-top: 3rem; }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; } h2 { font-size: 1.5rem; }
+            .container { padding: 1.5rem 1rem; } .hero { padding: 3rem 0.5rem; }
+            #authForm { padding: 1.5rem; } .data-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1 class="prompt"><span class="accent">$</span> auth_required </h1>
+            <h2>[ Secure Identity Vault ]</h2>
+            <p class="tagline">Personal information encrypted client-side. Data exists only in memory after successful authentication.</p>
+            
+            <form id="authForm">
+                <label for="passwordInput"><span class="accent">></span> Enter PSK to decrypt:</label>
+                <input type="password" id="passwordInput" placeholder="················" autocomplete="off" autofocus>
+                <button type="submit"><span class="accent">></span> Decrypt & Load</button>
+                <div id="authMessage"></div>
+            </form>
+        </header>
+
+        <div id="dataDisplay">
+            <h2><span class="accent">#</span> decrypted_identity</h2>
+            
+            <div class="data-grid">
+                <div class="data-section">
+                    <h3><span class="accent">></span> Profile Metadata</h3>
+                    <div class="info-item"><label>Profile Type</label><div class="value" id="profileType"></div></div>
+                    <div class="info-item"><label>Last Updated</label><div class="value" id="lastUpdated"></div></div>
+                </div>
+
+                <div class="data-section">
+                    <h3><span class="accent">></span> Personal Information</h3>
+                    <div class="info-item"><label>Full Name</label><div class="value" id="fullName"></div></div>
+                    <div class="info-item"><label>Date of Birth</label><div class="value" id="dateOfBirth"></div></div>
+                    <div class="info-item"><label>Age</label><div class="value" id="age"></div></div>
+                    <div class="info-item"><label>Nationality</label><div class="value" id="nationality"></div></div>
+                    <div class="info-item"><label>Languages</label><div class="value" id="languages"></div></div>
+                </div>
+
+                <div class="data-section">
+                    <h3><span class="accent">></span> Address Details</h3>
+                    <div class="info-item"><label>Primary Address</label><div class="value" id="primaryAddress"></div></div>
+                    <div class="info-item"><label>Locality</label><div class="value" id="locality"></div></div>
+                    <div class="info-item"><label>City / District</label><div class="value" id="cityDistrict"></div></div>
+                    <div class="info-item"><label>State & Pincode</label><div class="value" id="statePincode"></div></div>
+                    <div class="info-item"><label>Country</label><div class="value" id="country"></div></div>
+                </div>
+
+                <div class="data-section">
+                    <h3><span class="accent">></span> Contact Information</h3>
+                    <div class="info-item"><label>Primary Phone</label><div class="value" id="primaryPhone"></div></div>
+                    <h4>Emergency Contact</h4>
+                    <div class="info-item"><label>Name</label><div class="value" id="emergencyName"></div></div>
+                    <div class="info-item"><label>Relation</label><div class="value" id="emergencyRelation"></div></div>
+                    <div class="info-item"><label>Phone</label><div class="value" id="emergencyPhone"></div></div>
+                </div>
+
+                <div class="data-section">
+                    <h3><span class="accent">></span> Medical & Government ID</h3>
+                    <div class="info-item"><label>Blood Group</label><div class="value"><span class="badge" id="bloodGroup"></span></div></div>
+                    <div class="info-item"><label>Organ Donor</label><div class="value" id="organDonor"></div></div>
+                    <h4>Government Identification</h4>
+                    <div class="info-item"><label>ID Type</label><div class="value" id="idType"></div></div>
+                    <div class="info-item"><label>Aadhaar Number</label><div class="value" id="aadharNumber"></div></div>
+                </div>
+            </div>
+
+            <button id="logoutBtn"><span class="accent">></span> Clear Session & Lock</button>
+        </div>
+
+        <footer class="footer">
+            <p>© <span id="current-year">2024</span> | <span class="accent">Client-Side Encryption</span> | No data persistence</p>
+            <p class="footer-hint"><span class="accent">$</span> Data exists only in active memory. Close tab to erase.</p>
+        </footer>
+    </div>
+
+    <script>
+        // ============================================
+        // ENCRYPTED DATA BLOB
+        // Run the encrypt-data.js script and paste the output here
+        // ============================================
+        const encryptedDataBlob = "OnpULpo2IZ4mooW37EUAJXkcmFe1AmriZ4wa1nduK0ZsKbQmHSqhCsUvM+KRIRdv0H3NwU/GoUgLgmde1np1XZjJQSwEsgbQP1XJ7Yj+0YBE0B9OvsfeFky0SzlPGmE+c42np0fR5YcfkZnqEPZyzRm1aU0iK1GaVs3tstT3TKUSheomG+lE3c10vORS3gqidGUHVaRAQtEHLyA163T/LDINQspUNMd43uxh0VTYN7KnMRSVKIsVjuX1wVe9LuNkxZYKDPfTaLVCqQerc1PHrwrn0a9SRAloecuHN9yIt6FNlxz6KgzBj3JE/1L+EnKAmfJEFG1fEIfS8P/RKBj2czFhFCGmQdRbmaF4AKXBSL1naE4oSSdl1ktZtiUbD4lldN6eGEeX+6BQgzNxCiZstuw3EamXuwgrP+K3oRmXWs1I1Va3RW8dW0YvR29WHxK7xGFvDEuq3Y2U15Q+NbHfsasH0Cqy7/ktawd9DTH/LSbO7nAlO6Xfphex4bmDFRNw2ILE0qoHrQZz0xq/tatbyqf+cbQxXqxc01uq86xDxB+CMjWjqZCm0QHKiEaMkoOuOM/VmbW1cVA+oilccVSrc/cskhl4ny5MeaVEPFRLETm2NwwtUSvPN0e22mp+DGlLvHIFnrv87TiEAES2tyi+ny6isnGvkKnUBvvLrcNeFohgHCmLMTOEr3HVZ0g8En+xky5rF1HN5NqecIAFu7aqVx1H/I9DCzsX1v+iZ8o5o9tS2ahtpu+9Q8g4osJ7E9WbYDbhncXuFw/gRQFcctpO1oi/YkWVHLVeXN5ktagJdKZnKLUTihQR9oBAtEpjjfuwKAt1kZQB2O0xMc8lYJH08HM6bnI4nBebith8KC9Hf9i1LchNv1jZHkzIk1SjfT5Qs1YRES8zQP5/AWaLhBA2Cwbau1dr+0tZImO7p8mNhpP0b1FQeO/mYqJjfvi0Crft/gozzH+7dwnuTBH/R+1O1QsS3xTgr7BlSsDc3rMW5FXjiRrcp76/PY1j2keJD/Lo";
+
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Password hashing function (PBKDF2 using Web Crypto API)
+        async function deriveKey(password, salt, iterations = 100000) {
+            const encoder = new TextEncoder();
+            const keyMaterial = await crypto.subtle.importKey(
+                "raw",
+                encoder.encode(password),
+                { name: "PBKDF2" },
+                false,
+                ["deriveKey"]
+            );
+            
+            return await crypto.subtle.deriveKey(
+                {
+                    name: "PBKDF2",
+                    salt: salt,
+                    iterations: iterations,
+                    hash: "SHA-256"
+                },
+                keyMaterial,
+                { name: "AES-CBC", length: 256 },
+                false,
+                ["decrypt"]
+            );
+        }
+
+        // Decryption function
+        async function decryptData(encryptedBase64, password) {
+            try {
+                // Convert base64 to ArrayBuffer
+                const encryptedBuffer = Uint8Array.from(atob(encryptedBase64), c => c.charCodeAt(0));
+                
+                // Extract components (salt: 16 bytes, iv: 16 bytes, encrypted data: rest)
+                const salt = encryptedBuffer.slice(0, 16);
+                const iv = encryptedBuffer.slice(16, 32);
+                const encrypted = encryptedBuffer.slice(32);
+                
+                // Derive key from password
+                const key = await deriveKey(password, salt);
+                
+                // Decrypt the data
+                const decryptedBuffer = await crypto.subtle.decrypt(
+                    { name: "AES-CBC", iv: iv },
+                    key,
+                    encrypted
+                );
+                
+                // Convert to string and parse JSON
+                const decoder = new TextDecoder();
+                const decryptedText = decoder.decode(decryptedBuffer);
+                return JSON.parse(decryptedText);
+                
+            } catch (error) {
+                console.error("Decryption failed:", error);
+                return null;
+            }
+        }
+
+        // Display decrypted data
+        function displayData(data) {
+            if (!data) return;
+            
+            // Profile Metadata
+            document.getElementById('profileType').textContent = data.profileType;
+            document.getElementById('lastUpdated').textContent = 
+                `${data.metadata.lastUpdated.date} ${data.metadata.lastUpdated.time || ''}`;
+            
+            // Personal Information
+            document.getElementById('fullName').textContent = data.personalInfo.fullName;
+            document.getElementById('dateOfBirth').textContent = data.personalInfo.dateOfBirth;
+            document.getElementById('age').textContent = data.personalInfo.age;
+            document.getElementById('nationality').textContent = data.personalInfo.nationality;
+            document.getElementById('languages').innerHTML = data.personalInfo.languages
+                .map(lang => `<div class="list-item">${lang}</div>`).join('');
+            
+            // Address
+            document.getElementById('primaryAddress').textContent = 
+                `${data.address.houseName}, ${data.address.houseNumber}`;
+            document.getElementById('locality').textContent = 
+                `${data.address.area}, ${data.address.road}`;
+            document.getElementById('cityDistrict').textContent = 
+                `${data.address.city}, ${data.address.district}`;
+            document.getElementById('statePincode').textContent = 
+                `${data.address.state} - ${data.address.pincode}`;
+            document.getElementById('country').textContent = data.address.country;
+            
+            // Contact
+            document.getElementById('primaryPhone').textContent = data.contactInfo.phone;
+            document.getElementById('emergencyName').textContent = data.emergencyContact.name;
+            document.getElementById('emergencyRelation').textContent = data.emergencyContact.relation;
+            document.getElementById('emergencyPhone').textContent = data.emergencyContact.phone;
+            
+            // Medical & ID
+            document.getElementById('bloodGroup').textContent = data.medicalInfo.bloodGroup;
+            document.getElementById('organDonor').textContent = data.medicalInfo.organDonor ? "Yes" : "No";
+            document.getElementById('idType').textContent = data.governmentID.idType;
+            document.getElementById('aadharNumber').textContent = data.governmentID.aadharNumber;
+            
+            // Show data display
+            document.getElementById('dataDisplay').style.display = 'block';
+            document.getElementById('logoutBtn').style.display = 'block';
+            document.getElementById('authForm').style.display = 'none';
+        }
+
+        // Clear all data from memory
+        function clearSession() {
+            // Hide data display
+            document.getElementById('dataDisplay').style.display = 'none';
+            document.getElementById('logoutBtn').style.display = 'none';
+            document.getElementById('authForm').style.display = 'block';
+            
+            // Clear password field
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('authMessage').textContent = '';
+            
+            // Clear all displayed data
+            const valueElements = document.querySelectorAll('.value');
+            valueElements.forEach(el => el.textContent = '');
+            
+            // Focus on password input
+            document.getElementById('passwordInput').focus();
+        }
+
+        // Event Listeners
+        document.getElementById('authForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('passwordInput').value;
+            const messageEl = document.getElementById('authMessage');
+            
+            messageEl.textContent = 'Decrypting...';
+            messageEl.className = '';
+            
+            try {
+                const decryptedData = await decryptData(encryptedDataBlob, password);
+                
+                if (decryptedData) {
+                    messageEl.textContent = '✅ Authentication successful!';
+                    messageEl.className = 'success';
+                    displayData(decryptedData);
+                } else {
+                    messageEl.textContent = '❌ Invalid password or corrupted data';
+                    messageEl.className = 'error';
+                }
+            } catch (error) {
+                messageEl.textContent = '❌ Decryption failed';
+                messageEl.className = 'error';
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', clearSession);
+
+        // Auto-logout on page refresh/close
+        window.addEventListener('beforeunload', function() {
+            // Data is already only in memory, so closing clears it automatically
+        });
+    </script>
+</body>
+</html>
