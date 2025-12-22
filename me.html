@@ -117,47 +117,7 @@
             <h2><span class="accent">#</span> decrypted_identity</h2>
             
             <div class="data-grid">
-                <div class="data-section">
-                    <h3><span class="accent">></span> Profile Metadata</h3>
-                    <div class="info-item"><label>Profile Type</label><div class="value" id="profileType"></div></div>
-                    <div class="info-item"><label>Last Updated</label><div class="value" id="lastUpdated"></div></div>
-                </div>
-
-                <div class="data-section">
-                    <h3><span class="accent">></span> Personal Information</h3>
-                    <div class="info-item"><label>Full Name</label><div class="value" id="fullName"></div></div>
-                    <div class="info-item"><label>Date of Birth</label><div class="value" id="dateOfBirth"></div></div>
-                    <div class="info-item"><label>Age</label><div class="value" id="age"></div></div>
-                    <div class="info-item"><label>Nationality</label><div class="value" id="nationality"></div></div>
-                    <div class="info-item"><label>Languages</label><div class="value" id="languages"></div></div>
-                </div>
-
-                <div class="data-section">
-                    <h3><span class="accent">></span> Address Details</h3>
-                    <div class="info-item"><label>Primary Address</label><div class="value" id="primaryAddress"></div></div>
-                    <div class="info-item"><label>Locality</label><div class="value" id="locality"></div></div>
-                    <div class="info-item"><label>City / District</label><div class="value" id="cityDistrict"></div></div>
-                    <div class="info-item"><label>State & Pincode</label><div class="value" id="statePincode"></div></div>
-                    <div class="info-item"><label>Country</label><div class="value" id="country"></div></div>
-                </div>
-
-                <div class="data-section">
-                    <h3><span class="accent">></span> Contact Information</h3>
-                    <div class="info-item"><label>Primary Phone</label><div class="value" id="primaryPhone"></div></div>
-                    <h4>Emergency Contact</h4>
-                    <div class="info-item"><label>Name</label><div class="value" id="emergencyName"></div></div>
-                    <div class="info-item"><label>Relation</label><div class="value" id="emergencyRelation"></div></div>
-                    <div class="info-item"><label>Phone</label><div class="value" id="emergencyPhone"></div></div>
-                </div>
-
-                <div class="data-section">
-                    <h3><span class="accent">></span> Medical & Government ID</h3>
-                    <div class="info-item"><label>Blood Group</label><div class="value"><span class="badge" id="bloodGroup"></span></div></div>
-                    <div class="info-item"><label>Organ Donor</label><div class="value" id="organDonor"></div></div>
-                    <h4>Government Identification</h4>
-                    <div class="info-item"><label>ID Type</label><div class="value" id="idType"></div></div>
-                    <div class="info-item"><label>Aadhaar Number</label><div class="value" id="aadharNumber"></div></div>
-                </div>
+                <!-- Dynamically populated here -->
             </div>
 
             <button id="logoutBtn"><span class="accent">></span> Clear Session & Lock</button>
@@ -170,16 +130,63 @@
     </div>
 
     <script>
-        // ============================================
-        // ENCRYPTED DATA BLOB
-        // Run the encrypt-data.js script and paste the output here
-        // ============================================
-        const encryptedDataBlob = "OnpULpo2IZ4mooW37EUAJXkcmFe1AmriZ4wa1nduK0ZsKbQmHSqhCsUvM+KRIRdv0H3NwU/GoUgLgmde1np1XZjJQSwEsgbQP1XJ7Yj+0YBE0B9OvsfeFky0SzlPGmE+c42np0fR5YcfkZnqEPZyzRm1aU0iK1GaVs3tstT3TKUSheomG+lE3c10vORS3gqidGUHVaRAQtEHLyA163T/LDINQspUNMd43uxh0VTYN7KnMRSVKIsVjuX1wVe9LuNkxZYKDPfTaLVCqQerc1PHrwrn0a9SRAloecuHN9yIt6FNlxz6KgzBj3JE/1L+EnKAmfJEFG1fEIfS8P/RKBj2czFhFCGmQdRbmaF4AKXBSL1naE4oSSdl1ktZtiUbD4lldN6eGEeX+6BQgzNxCiZstuw3EamXuwgrP+K3oRmXWs1I1Va3RW8dW0YvR29WHxK7xGFvDEuq3Y2U15Q+NbHfsasH0Cqy7/ktawd9DTH/LSbO7nAlO6Xfphex4bmDFRNw2ILE0qoHrQZz0xq/tatbyqf+cbQxXqxc01uq86xDxB+CMjWjqZCm0QHKiEaMkoOuOM/VmbW1cVA+oilccVSrc/cskhl4ny5MeaVEPFRLETm2NwwtUSvPN0e22mp+DGlLvHIFnrv87TiEAES2tyi+ny6isnGvkKnUBvvLrcNeFohgHCmLMTOEr3HVZ0g8En+xky5rF1HN5NqecIAFu7aqVx1H/I9DCzsX1v+iZ8o5o9tS2ahtpu+9Q8g4osJ7E9WbYDbhncXuFw/gRQFcctpO1oi/YkWVHLVeXN5ktagJdKZnKLUTihQR9oBAtEpjjfuwKAt1kZQB2O0xMc8lYJH08HM6bnI4nBebith8KC9Hf9i1LchNv1jZHkzIk1SjfT5Qs1YRES8zQP5/AWaLhBA2Cwbau1dr+0tZImO7p8mNhpP0b1FQeO/mYqJjfvi0Crft/gozzH+7dwnuTBH/R+1O1QsS3xTgr7BlSsDc3rMW5FXjiRrcp76/PY1j2keJD/Lo";
+        const encryptedDataBlob = "3PnPHOhFO74XSRU3hZO6+44e9LL1H9b9XSrcIskWEgxKe7iZEeRY3C9lThqBjPtf9Y3W+rUQ5orPNfVl4X3ovAQVcABFsBT8dLKmcPad0FmM9p3NAiaxbkiYP3u//a0f09LJ1C7cMJs9bs2LPSA1XKKlAN4jBPw4vHheJzPXES0qvIiM9OqsFhgO5lbptO8Wxp3IJZoqjXOEgoKYnshMmTE7AjHtSfV1jQCqE3Gon87Z+qIQGdYcQrnDrSk3clp5yaxaC0SnUTcl08/nyd8Y6mB4ilUMWxdbjLufGCERrSZhiXGLFbTVXrLvk2vzjCafA6Yl8vxQn/wICtiiCLxOmeHWzTgPeYlMWO1VfsiGchbY5Rz5cK6Ul2ZjX060CQabQKv10rrPHUo2mbhaKRRwaReB+g3y/cPRaefNNdX2BwqrqLOLhmry8ps6DJBwvFaFrLFDQsUX9OarJ8ZtnqU57ytqTKBCe4pbi7msSl+jOMeWGXkSMnLHyHytYJq5BWnxJST2VovtX/UO4E/Ul/BQ4tumBSk2MyiywHTdZGox3ScWVnpIR+7G+ANKW3mHD7DU+/zdLtWK7AcxERg5wKm/Szhafj+OblxPVixXmUSCfv4lhp+jO2OJbIPmwhZWwJZ8ZpbPRQ0JqSBmOi1vaPpg00ZZgtTBhNmqJMcK+MUvxN6CCqkAmEMX75gWRd5TmXPUY9H7WdkxBGjjkbmivWLag4+XUKqWHHMOWsj2IoGs9q5x97SPanKXSaJsY/FgATdWTEey9bWSjlJQ3z7BuCstx7c3RaxyPtR+Xlzikg44CKZcofBiUB/U0gYc3T4VsVU7mfSBlZNU0WbkV8P5JB4iBIX8DB9T2PxJFh+xQEwS7pfF7daoBncPU4fkR+xumE+2S6KyZjLcranibNbLInYsvRF3qHhu8gOsJin58zlCxpeqGdM6GBzpK8akscoNh5h7KtJhvorG5gzXWNxZhEn06gofUUIn1ca/IUEKZvZR9oRCgW3UfRpcRxrgMx4JJYgBj0gdZD2Rcw7aWEkxjNuv0Rnu7VhpGA/rJ0ZVnBdBYTEXb0n0XV/vRhr3yJSB2KRnHTOiI06hS19pb61r2qxRnQ==";
 
-        // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // Password hashing function (PBKDF2 using Web Crypto API)
+        function capitalize(key) {
+            return key
+                .replace(/([A-Z])/g, ' $1')
+                .replace(/^./, (s) => s.toUpperCase())
+                .replace(/_/g, ' ');
+        }
+
+        function renderObject(obj, container, headerLevel = 4) {
+            Object.keys(obj).forEach((key) => {
+                const val = obj[key];
+                if (typeof val === 'object' && val !== null && !Array.isArray(val)) {
+                    const header = document.createElement(`h${headerLevel}`);
+                    header.innerHTML = `<span class="accent">></span> ${capitalize(key)}`;
+                    container.appendChild(header);
+                    renderObject(val, container, headerLevel + 1);
+                } else {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'info-item';
+                    const label = document.createElement('label');
+                    label.textContent = capitalize(key);
+                    itemDiv.appendChild(label);
+                    const valueDiv = document.createElement('div');
+                    valueDiv.className = 'value';
+                    if (Array.isArray(val)) {
+                        val.forEach((item) => {
+                            const listItem = document.createElement('div');
+                            listItem.className = 'list-item';
+                            listItem.textContent = item;
+                            valueDiv.appendChild(listItem);
+                        });
+                    } else if (typeof val === 'boolean') {
+                        valueDiv.textContent = val ? 'Yes' : 'No';
+                    } else {
+                        valueDiv.textContent = val;
+                    }
+                    if (key.toLowerCase() === 'bloodgroup') {
+                        valueDiv.innerHTML = `<span class="badge">${valueDiv.textContent}</span>`;
+                    }
+                    itemDiv.appendChild(valueDiv);
+                    container.appendChild(itemDiv);
+                }
+            });
+        }
+
+        function unpadPKCS7(text) {
+            if (text.length === 0) return text;
+            const pad = text.charCodeAt(text.length - 1);
+            if (pad < 1 || pad > 16) return text;
+            const padBytes = text.slice(text.length - pad);
+            if (![...padBytes].every(c => c.charCodeAt(0) === pad)) return text;
+            return text.slice(0, text.length - pad);
+        }
+
         async function deriveKey(password, salt, iterations = 100000) {
             const encoder = new TextEncoder();
             const keyMaterial = await crypto.subtle.importKey(
@@ -204,30 +211,25 @@
             );
         }
 
-        // Decryption function
         async function decryptData(encryptedBase64, password) {
             try {
-                // Convert base64 to ArrayBuffer
                 const encryptedBuffer = Uint8Array.from(atob(encryptedBase64), c => c.charCodeAt(0));
                 
-                // Extract components (salt: 16 bytes, iv: 16 bytes, encrypted data: rest)
                 const salt = encryptedBuffer.slice(0, 16);
                 const iv = encryptedBuffer.slice(16, 32);
                 const encrypted = encryptedBuffer.slice(32);
                 
-                // Derive key from password
                 const key = await deriveKey(password, salt);
                 
-                // Decrypt the data
                 const decryptedBuffer = await crypto.subtle.decrypt(
                     { name: "AES-CBC", iv: iv },
                     key,
                     encrypted
                 );
                 
-                // Convert to string and parse JSON
-                const decoder = new TextDecoder();
-                const decryptedText = decoder.decode(decryptedBuffer);
+                let decryptedText = new TextDecoder().decode(decryptedBuffer);
+                decryptedText = unpadPKCS7(decryptedText);
+                
                 return JSON.parse(decryptedText);
                 
             } catch (error) {
@@ -236,72 +238,61 @@
             }
         }
 
-        // Display decrypted data
         function displayData(data) {
             if (!data) return;
             
-            // Profile Metadata
-            document.getElementById('profileType').textContent = data.profileType;
-            document.getElementById('lastUpdated').textContent = 
-                `${data.metadata.lastUpdated.date} ${data.metadata.lastUpdated.time || ''}`;
+            const dataGrid = document.querySelector('.data-grid');
+            dataGrid.innerHTML = '';
             
-            // Personal Information
-            document.getElementById('fullName').textContent = data.personalInfo.fullName;
-            document.getElementById('dateOfBirth').textContent = data.personalInfo.dateOfBirth;
-            document.getElementById('age').textContent = data.personalInfo.age;
-            document.getElementById('nationality').textContent = data.personalInfo.nationality;
-            document.getElementById('languages').innerHTML = data.personalInfo.languages
-                .map(lang => `<div class="list-item">${lang}</div>`).join('');
+            Object.keys(data).forEach((key) => {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'data-section';
+                const h3 = document.createElement('h3');
+                h3.innerHTML = `<span class="accent">></span> ${capitalize(key)}`;
+                sectionDiv.appendChild(h3);
+                
+                const val = data[key];
+                if (typeof val === 'object' && val !== null && !Array.isArray(val)) {
+                    renderObject(val, sectionDiv);
+                } else {
+                    const valueDiv = document.createElement('div');
+                    valueDiv.className = 'value';
+                    if (Array.isArray(val)) {
+                        val.forEach((item) => {
+                            const listItem = document.createElement('div');
+                            listItem.className = 'list-item';
+                            listItem.textContent = item;
+                            valueDiv.appendChild(listItem);
+                        });
+                    } else if (typeof val === 'boolean') {
+                        valueDiv.textContent = val ? 'Yes' : 'No';
+                    } else {
+                        valueDiv.textContent = val;
+                    }
+                    sectionDiv.appendChild(valueDiv);
+                }
+                
+                dataGrid.appendChild(sectionDiv);
+            });
             
-            // Address
-            document.getElementById('primaryAddress').textContent = 
-                `${data.address.houseName}, ${data.address.houseNumber}`;
-            document.getElementById('locality').textContent = 
-                `${data.address.area}, ${data.address.road}`;
-            document.getElementById('cityDistrict').textContent = 
-                `${data.address.city}, ${data.address.district}`;
-            document.getElementById('statePincode').textContent = 
-                `${data.address.state} - ${data.address.pincode}`;
-            document.getElementById('country').textContent = data.address.country;
-            
-            // Contact
-            document.getElementById('primaryPhone').textContent = data.contactInfo.phone;
-            document.getElementById('emergencyName').textContent = data.emergencyContact.name;
-            document.getElementById('emergencyRelation').textContent = data.emergencyContact.relation;
-            document.getElementById('emergencyPhone').textContent = data.emergencyContact.phone;
-            
-            // Medical & ID
-            document.getElementById('bloodGroup').textContent = data.medicalInfo.bloodGroup;
-            document.getElementById('organDonor').textContent = data.medicalInfo.organDonor ? "Yes" : "No";
-            document.getElementById('idType').textContent = data.governmentID.idType;
-            document.getElementById('aadharNumber').textContent = data.governmentID.aadharNumber;
-            
-            // Show data display
             document.getElementById('dataDisplay').style.display = 'block';
             document.getElementById('logoutBtn').style.display = 'block';
             document.getElementById('authForm').style.display = 'none';
         }
 
-        // Clear all data from memory
         function clearSession() {
-            // Hide data display
             document.getElementById('dataDisplay').style.display = 'none';
             document.getElementById('logoutBtn').style.display = 'none';
             document.getElementById('authForm').style.display = 'block';
             
-            // Clear password field
             document.getElementById('passwordInput').value = '';
             document.getElementById('authMessage').textContent = '';
             
-            // Clear all displayed data
-            const valueElements = document.querySelectorAll('.value');
-            valueElements.forEach(el => el.textContent = '');
+            document.querySelector('.data-grid').innerHTML = '';
             
-            // Focus on password input
             document.getElementById('passwordInput').focus();
         }
 
-        // Event Listeners
         document.getElementById('authForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -330,10 +321,7 @@
 
         document.getElementById('logoutBtn').addEventListener('click', clearSession);
 
-        // Auto-logout on page refresh/close
-        window.addEventListener('beforeunload', function() {
-            // Data is already only in memory, so closing clears it automatically
-        });
+        window.addEventListener('beforeunload', function() {});
     </script>
 </body>
 </html>
